@@ -1,8 +1,8 @@
-Package: censusr
+Package: censusr_geo
 Type: Package
 Title: Collect Data from the Census API
-Version: 0.0.4
-Date: 2018-01-23
+Version: 0.0.5
+Date: 2022-06-01
 Authors@R: c(
     person("Greg", "Macfarlane", email = "greg@transportfoundry.com", role = c("cre", "aut")),
     person("Josie", "Kressner", email = "josie@transportfoundry.com", role = "aut"))
