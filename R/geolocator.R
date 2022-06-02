@@ -61,7 +61,7 @@ append_geoid <- function(address, geoid_type = 'bl') {
 
   return(address)
 }
-
+}
 
 #' Call gelocator for one address
 #'
@@ -150,5 +150,4 @@ call_geolocator_latlon <- function(lat, lon) {
     }
     return(response$result$geographies$`Census Blocks`[[1]]$GEOID)
   }
-}
 }
