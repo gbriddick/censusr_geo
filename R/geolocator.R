@@ -39,8 +39,7 @@ append_geoid <- function(address, geoid_type = 'bl') {
     for (i in 1:nrow(address)) {
       geoids[i] <- call_geolocator(
         as.character(address$street[i]),
-        as.character(address$city[i]),
-        as.character(address$state[i])
+        as.character(address$zip[i])
       )
     }
   }
@@ -85,11 +84,10 @@ call_geolocator <- function(street, city, state) {
 
   url <- paste0(
     "street=", utils::URLencode(street),
-    "&city=", utils::URLencode(city),
-    "&state=", state
+    "&city=", utils::URLencode(zip)
   )
 
-  call_end <- "&benchmark=Public_AR_Census2010&vintage=Census2010_Census2010&layers=14&format=json"
+  call_end <- "&benchmark=Public_AR_Census2020&vintage=Census2020_Census2020&layers=14&format=json"
 
   url_full <- paste0(call_start, url, call_end)
 
@@ -99,13 +97,13 @@ call_geolocator <- function(street, city, state) {
   response <- httr::content(r)
   if (length(response$result$addressMatches) == 0) {
     message(paste0("Address (",
-                   street, " ", city, " ", state,
+                   street, " ", zip,
                    ") returned no address matches. An NA was returned."))
     return(NA_character_)
   } else {
     if (length(response$result$addressMatches) > 1) {
       message(paste0("Address (",
-                     street, " ", city, " ", state,
+                     street, " ", zip,
                      ") returned more than one address match. The first match was returned."))
     }
     return(response$result$addressMatches[[1]]$geographies$`Census Blocks`[[1]]$GEOID)
@@ -135,7 +133,7 @@ call_geolocator_latlon <- function(lat, lon) {
     "&y=", lat
   )
 
-  call_end <- "&benchmark=Public_AR_Census2010&vintage=Census2010_Census2010&layers=14&format=json"
+  call_end <- "&benchmark=Public_AR_Census2020&vintage=Census2020_Census2020&layers=14&format=json"
 
   url_full <- paste0(call_start, url, call_end)
 
