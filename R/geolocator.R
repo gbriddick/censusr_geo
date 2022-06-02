@@ -1,6 +1,6 @@
 #' Retrieve GEOID from the Census Geocoder by address
 #'
-#' Returns GEOID for 2010 geographies.
+#' Returns GEOID for 2020 geographies.
 #'
 #' @param address A tibble/data frame with (at a minimum, others can be present)
 #'   either character columns street, city, and state OR numeric columns lat and
@@ -150,4 +150,5 @@ call_geolocator_latlon <- function(lat, lon) {
     }
     return(response$result$geographies$`Census Blocks`[[1]]$GEOID)
   }
+}
 }
