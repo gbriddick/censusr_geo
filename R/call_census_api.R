@@ -35,7 +35,7 @@ call_census_api <- function(variables_to_get,
                             names = NULL,
                             geoids, allgeos = NULL,
                             data_source = c("sf1", "acs"),
-                            year = 2013, period = 5,
+                            year = 2020, period = 5,
                             api_key = NULL){
 
   data_source <- match.arg(data_source)
@@ -102,7 +102,7 @@ call_api_once <- function(variables_to_get, geoid, allgeos, data_source, year,
   # construct primary url depending on requested dataset
   if(data_source == "sf1"){
     # Census SF1 data
-    call_start <- "https://api.census.gov/data/2010/sf1?get="
+    call_start <- "https://api.census.gov/data/2020/sf1?get="
   } else if(data_source == "acs"){
     # ACS summary tables
     call_start <- paste(
