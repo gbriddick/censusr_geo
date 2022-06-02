@@ -76,7 +76,7 @@ append_geoid <- function(address, geoid_type = 'bl') {
 #'
 #' @export
 #'
-call_geolocator <- function(street, city, state) {
+call_geolocator <- function(street, zip) {
   # Build url
   call_start <- "https://geocoding.geo.census.gov/geocoder/geographies/address?"
 
